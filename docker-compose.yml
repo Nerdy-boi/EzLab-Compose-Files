@@ -1,0 +1,12 @@
+include:
+    - EZARR.yml #Arr stack and download clients
+    #- NPM.yml #Nginx Proxy Manager
+    - traefik.yml
+    - pihole.yml # pihole
+    - grafana.yml #Grafana
+    - heimdall.yml
+    
+networks:
+    internal:
+        name: internal
+        driver: bridge

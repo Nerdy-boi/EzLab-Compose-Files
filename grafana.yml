@@ -1,0 +1,13 @@
+services:
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    networks:
+      - internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.meganet.fun`)"
+      - "traefik.http.routers.grafana.entrypoints=web"
+    restart: unless-stopped
+    ports:
+     - '3000:3000'

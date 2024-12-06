@@ -1,0 +1,17 @@
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Etc/UTC
+    volumes:
+        - ${STORAGE}/config/heimdall-config/config:/config
+    networks:
+        - internal
+    restart: unless-stopped
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.heimdall.rule=Host(`seganet.fun`)"
+        - "traefik.http.routers.heimdall.entrypoints=web"
